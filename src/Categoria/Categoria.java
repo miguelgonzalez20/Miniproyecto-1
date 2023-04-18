@@ -23,7 +23,7 @@ public class Categoria {
         colores = "NONE";
         frutas = "NONE";
         vocal = "NONE";
-        String[] Arreglo = new String[10];
+        Arreglo = new String[10];
     }
     
     public void setArregloAnimales(){
@@ -72,25 +72,48 @@ public class Categoria {
         return Arreglo[indice];
     }
     
-    public String quitarVocal(String palabra){
+    public String quitarVocal(String palabra){ //QUITA LA VOCAL Y LO REEMPLAZA POR UN " "
+        
+        StringBuilder resultado = new StringBuilder();
+        
         String palabra1 = palabra;
         String palabraSinVocal;
-        String vocal;
         int contador = 0;
         for( int j = 0; j < palabra1.length(); j++ ){
             
-            if ( contador == 0 & palabra1[ j ] == "a" | palabra1[ j ] == "e" | 
-                 palabra1[ j ] == "i" | palabra1[ j ] == "o" | 
-                 palabra1[ j ] == "u" | ){
+            char caracter = palabra1.charAt(j);
+            
+            if (('a' == palabra1.charAt(j) | 'e' == palabra1.charAt(j) | 
+                'i' == palabra1.charAt(j) | 'o' == palabra1.charAt(j) | 
+                'u' == palabra1.charAt(j)) & contador == 0){
                 
-                vocal = palabra1[j];
-                palabra1[j] = " ";
+                resultado.append(' ');
                 contador++;
+               
+            } else {
+                resultado.append(caracter);
             }
         }
-        palabraSinVocal = palabra1;
-        this.vocal = vocal;
-        return palabraSinVocal;
+        return resultado.toString();
+    }
+    
+    public char getVocal(String palabra){
+        String palabra2 = palabra;
+        char vocal;
+        //int contador = 0;
+        for( int j = 0; j < palabra2.length(); j++ ){
+            
+            if ('a' == palabra2.charAt(j) | 'e' == palabra2.charAt(j) | 
+                'i' == palabra2.charAt(j) | 'o' == palabra2.charAt(j) | 
+                'u' == palabra2.charAt(j) ){
+                
+                vocal = palabra2.charAt(j);
+                //contador++;
+                return vocal;
+            }
+        }
+        return 0;
+        
     }
     
 }
