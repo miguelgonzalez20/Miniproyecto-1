@@ -138,32 +138,14 @@ public class VentanaCategoria extends javax.swing.JFrame {
 
     private void botonAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnimalActionPerformed
         Jugador jugador = new Jugador();
-        String palabraOculta;
-        String palabraMostrar;
-        char vocal;
         String nombreDigitado = textoNombre.getText();
         jugador.setNombre(nombreDigitado);
-        Categoria categoria = new Categoria();
-        categoria.setArregloAnimales();
-        for(int i = 0; i < 1; i++){
-            palabraOculta = categoria.getArreglo(i);
-            vocal = categoria.getVocal(palabraOculta);
-            palabraMostrar = categoria.quitarVocal(palabraOculta);
-            
-            //textMostrar.setText(categoria.palabraMostrar);
-            
-            VentanaJuego ventanajuego = new VentanaJuego();
-            ventanajuego.setVisible(true);
-            ventanajuego.setLocationRelativeTo(null);
-            this.setVisible(false);
-            
-            System.out.println("PRIMER ANIMAL : " + palabraOculta);
-            System.out.println("PALABRA A MOSTRAR : "+ palabraMostrar);
-            System.out.println("VOCAL = "+ vocal);
-            
-        }
-        //System.out.println("ATRIBUTO VOCAL QUEDO CON VALOR DE = " + categoria.vocal);
-        //System.out.println("NOMBRE JUGADOR = "+ jugador.getNombre());
+        
+        VentanaJuego Ventanajuego = new VentanaJuego();
+        Ventanajuego.setVisible(true);
+        Ventanajuego.setLocationRelativeTo(null);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_botonAnimalActionPerformed
 
     private void botonColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColorActionPerformed

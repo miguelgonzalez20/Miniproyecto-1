@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import Categoria.Categoria;
+import Jugador.Jugador;
+
 /**
  *
  * @author Miguel
@@ -28,17 +31,30 @@ public class VentanaJuego extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         textMostrar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textMostrar.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        textMostrar.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        textMostrar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textMostrar.setAlignmentX(2.0F);
         textMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMostrarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("BOTON");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -47,8 +63,13 @@ public class VentanaJuego extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jButton1)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -56,7 +77,9 @@ public class VentanaJuego extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jButton1)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -77,13 +100,37 @@ public class VentanaJuego extends javax.swing.JFrame {
         //textMostrar.setText(categoria.palabraMostrar);
     }//GEN-LAST:event_textMostrarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        String palabraOculta;
+        String palabraMostrar;
+        char vocal;
+        
+        Categoria categoria = new Categoria();
+        categoria.setArregloAnimales();
+        for(int i = 0; i < 1; i++){
+            palabraOculta = categoria.getArreglo(i);
+            vocal = categoria.getVocal(palabraOculta);
+            palabraMostrar = categoria.quitarVocal(palabraOculta);
+            
+            textMostrar.setText(palabraMostrar);
+            
+            System.out.println("PRIMER ANIMAL : " + palabraOculta);
+            System.out.println("PALABRA A MOSTRAR : "+ palabraMostrar);
+            System.out.println("VOCAL = "+ vocal);
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textMostrar;
     // End of variables declaration//GEN-END:variables
