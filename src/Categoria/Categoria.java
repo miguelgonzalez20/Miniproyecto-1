@@ -15,14 +15,17 @@ public class Categoria {
     String colores;
     String frutas;
     String[] Arreglo;
-    String vocal;
+    public char vocal;
+    public String palabraMostrar;
     // METODO CONSTRUCTOR
     public Categoria(){
         
         animales = "NONE";
         colores = "NONE";
         frutas = "NONE";
-        vocal = "NONE";
+        vocal = ' ';
+        palabraMostrar = "NONE";
+        
         Arreglo = new String[10];
     }
     
@@ -94,6 +97,7 @@ public class Categoria {
                 resultado.append(caracter);
             }
         }
+        this.palabraMostrar = resultado.toString();
         return resultado.toString();
     }
     
@@ -108,7 +112,7 @@ public class Categoria {
                 'u' == palabra2.charAt(j) ){
                 
                 vocal = palabra2.charAt(j);
-                //contador++;
+                this.vocal = vocal;
                 return vocal;
             }
         }
