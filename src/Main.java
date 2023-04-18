@@ -21,6 +21,7 @@ public class Main extends JFrame {
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
         ventanaPrincipal.setVisible(true);
         ventanaPrincipal.setLocationRelativeTo(null);
+   
     }
     
 }
