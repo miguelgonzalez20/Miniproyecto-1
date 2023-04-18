@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+import Categoria.Categoria;
 import Jugador.Jugador;
 /**
  *
@@ -137,8 +138,15 @@ public class VentanaCategoria extends javax.swing.JFrame {
 
     private void botonAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnimalActionPerformed
         Jugador jugador = new Jugador();
+        String nombreMostrar;
         String nombreDigitado = textoNombre.getText();
         jugador.setNombre(nombreDigitado);
+        Categoria categoria = new Categoria();
+        categoria.setArregloAnimales();
+        for(int i = 0; i < 10; i++){
+            nombreMostrar = categoria.getArreglo(i);
+            
+        }
         //System.out.println("NOMBRE JUGADOR = "+ jugador.getNombre());
     }//GEN-LAST:event_botonAnimalActionPerformed
 
