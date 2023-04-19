@@ -90,7 +90,7 @@ public class Categoria {
                 'i' == palabra1.charAt(j) | 'o' == palabra1.charAt(j) | 
                 'u' == palabra1.charAt(j)) & contador == 0){
                 
-                resultado.append(' ');
+                resultado.append('_');
                 contador++;
                
             } else {

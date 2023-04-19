@@ -14,9 +14,13 @@ import Jugador.Jugador;
  */
 public class VentanaJuego extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaJuego
-     */
+    char vocal;
+    String palabraOculta;
+    int total_Palabras = 0;
+    int cantidadIntentos = 0;
+    int cantidadFallos = 0;
+    int contador = 1;
+    public int i = 0; // CONTADOR DEL CICLO
     public VentanaJuego() {
         initComponents();
     }
@@ -35,6 +39,18 @@ public class VentanaJuego extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         textMostrar = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        BotonA = new javax.swing.JButton();
+        BotonE = new javax.swing.JButton();
+        BotonI = new javax.swing.JButton();
+        BotonO = new javax.swing.JButton();
+        BotonU = new javax.swing.JButton();
+        totalPalabras = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        totalPalabras1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        totalPalabras2 = new javax.swing.JTextField();
+        BotonSiguientePalabra = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -51,10 +67,89 @@ public class VentanaJuego extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("BOTON");
+        jButton1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jButton1.setText("MOSTRAR PALABRA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        BotonA.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        BotonA.setText("a");
+        BotonA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAActionPerformed(evt);
+            }
+        });
+
+        BotonE.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        BotonE.setText("e");
+        BotonE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEActionPerformed(evt);
+            }
+        });
+
+        BotonI.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        BotonI.setText("i");
+        BotonI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIActionPerformed(evt);
+            }
+        });
+
+        BotonO.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        BotonO.setText("o");
+        BotonO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonOActionPerformed(evt);
+            }
+        });
+
+        BotonU.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        BotonU.setText("u");
+        BotonU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonUActionPerformed(evt);
+            }
+        });
+
+        totalPalabras.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        totalPalabras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalPalabrasActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setText("Total Palabras ");
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel4.setText("Intentos");
+
+        totalPalabras1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        totalPalabras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalPalabras1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel5.setText("Fallos");
+
+        totalPalabras2.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        totalPalabras2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalPalabras2ActionPerformed(evt);
+            }
+        });
+
+        BotonSiguientePalabra.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        BotonSiguientePalabra.setText("SIGUIENTE PALABRA");
+        BotonSiguientePalabra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonSiguientePalabraActionPerformed(evt);
             }
         });
 
@@ -63,23 +158,68 @@ public class VentanaJuego extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(147, 147, 147))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jButton1)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(BotonA, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(BotonE, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonI, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(BotonO, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonU, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 17, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BotonSiguientePalabra, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalPalabras, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalPalabras1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalPalabras2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(87, 87, 87)
+                .addComponent(textMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jButton1)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonA, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonE, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonI, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonO, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonU, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(totalPalabras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(totalPalabras1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(totalPalabras2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(BotonSiguientePalabra)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,7 +230,9 @@ public class VentanaJuego extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,9 +250,16 @@ public class VentanaJuego extends javax.swing.JFrame {
         
         Categoria categoria = new Categoria();
         categoria.setArregloAnimales();
-        for(int i = 0; i < 1; i++){
+        
+        for( int i = 0; i < 10; ){
+            if( contador == total_Palabras+1){
+                
+                
+            }
             palabraOculta = categoria.getArreglo(i);
+            this.palabraOculta = categoria.getArreglo(i);
             vocal = categoria.getVocal(palabraOculta);
+            this.vocal = vocal;
             palabraMostrar = categoria.quitarVocal(palabraOculta);
             
             textMostrar.setText(palabraMostrar);
@@ -122,16 +271,108 @@ public class VentanaJuego extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BotonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAActionPerformed
+        if( 'a' == vocal){
+            textMostrar.setText(palabraOculta);
+            total_Palabras ++;
+            cantidadIntentos++;
+            
+        } else{
+            cantidadIntentos++;
+            cantidadFallos++;  
+        }
+    }//GEN-LAST:event_BotonAActionPerformed
+
+    private void totalPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPalabrasActionPerformed
+        String StringTotalPalabras = Integer. toString(total_Palabras);
+        totalPalabras.setText(StringTotalPalabras);
+    }//GEN-LAST:event_totalPalabrasActionPerformed
+
+    private void totalPalabras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPalabras1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalPalabras1ActionPerformed
+
+    private void totalPalabras2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPalabras2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalPalabras2ActionPerformed
+
+    private void BotonEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEActionPerformed
+        if( 'e' == vocal){
+            textMostrar.setText(palabraOculta);
+            total_Palabras ++;
+            cantidadIntentos++;
+            
+        } else{
+            cantidadIntentos++;
+            cantidadFallos++;  
+        }
+    }//GEN-LAST:event_BotonEActionPerformed
+
+    private void BotonIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIActionPerformed
+        if( 'i' == vocal){
+            textMostrar.setText(palabraOculta);
+            total_Palabras ++;
+            cantidadIntentos++;
+            
+        } else{
+            cantidadIntentos++;
+            cantidadFallos++;  
+        }
+    }//GEN-LAST:event_BotonIActionPerformed
+
+    private void BotonOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonOActionPerformed
+        if( 'o' == vocal){
+            textMostrar.setText(palabraOculta);
+            total_Palabras ++;
+            cantidadIntentos++;
+            
+        } else{
+            cantidadIntentos++;
+            cantidadFallos++;  
+        }
+    }//GEN-LAST:event_BotonOActionPerformed
+
+    private void BotonUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonUActionPerformed
+        if( 'u' == vocal){
+            textMostrar.setText(palabraOculta);
+            total_Palabras ++;
+            cantidadIntentos++;
+            
+        } else{
+            cantidadIntentos++;
+            cantidadFallos++;  
+        }
+    }//GEN-LAST:event_BotonUActionPerformed
+
+    private void BotonSiguientePalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSiguientePalabraActionPerformed
+        total_Palabras++;
+        i++;
+        contador++;
+        
+    }//GEN-LAST:event_BotonSiguientePalabraActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonA;
+    private javax.swing.JButton BotonE;
+    private javax.swing.JButton BotonI;
+    private javax.swing.JButton BotonO;
+    private javax.swing.JButton BotonSiguientePalabra;
+    private javax.swing.JButton BotonU;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textMostrar;
+    private javax.swing.JTextField totalPalabras;
+    private javax.swing.JTextField totalPalabras1;
+    private javax.swing.JTextField totalPalabras2;
     // End of variables declaration//GEN-END:variables
 }
